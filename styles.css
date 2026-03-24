@@ -1155,6 +1155,37 @@ img {
     }
 
     .section-title h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem; /* Even smaller for very narrow screens */
+        margin-bottom: 15px;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+
+    /* Shrink Marquee Cards for Narrow Phones */
+    .services-track .service-card {
+        width: 280px; 
+    }
+
+    .blog-track .blog-card {
+        width: 300px;
+    }
+
+    .blog-content {
+        padding: 25px 20px; /* Conserve horizontal space */
+    }
+
+    .contact-info {
+        padding: 30px 20px;
+    }
+    
+    .btn {
+        padding: 10px 20px; /* Slightly narrower buttons */
     }
 }
