@@ -42,11 +42,41 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content reveal">
-            <h1>Fast & Reliable Laundry & Cleaning Services in Accra & Tamale</h1>
-            <p>Premium laundry, dry cleaning, ironing, and professional home cleaning services. Experience spotless cleaning with ultimate convenience.</p>
+            <div class="hero-badge">
+                <i class="fas fa-star" style="color: #f59e0b;"></i>
+                <i class="fas fa-star" style="color: #f59e0b;"></i>
+                <i class="fas fa-star" style="color: #f59e0b;"></i>
+                <i class="fas fa-star" style="color: #f59e0b;"></i>
+                <i class="fas fa-star" style="color: #f59e0b;"></i>
+                <span>Trusted by 500+ Happy Clients</span>
+                <i class="fas fa-check-circle text-primary"></i>
+            </div>
+            
+            <h1>Your Strategic Partner for Spotless Cleaning</h1>
+            <p>We help bold clients unlock the power of convenience, accelerate their daily routines, and launch into a clean, fresh lifestyle built for comfort.</p>
+            
             <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Book Now</a>
-                <a href="#services" class="btn btn-outline">Our Services</a>
+                <a href="#contact" class="btn btn-primary">Book Free Consultation <i class="fas fa-arrow-right"></i></a>
+                <a href="#about" class="btn btn-outline">Our Journey</a>
+            </div>
+
+            <!-- Floating Stats -->
+            <div class="hero-stats">
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fas fa-tshirt"></i></div>
+                    <h3>50K+</h3>
+                    <p>Items Cleaned</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>24 Hrs</h3>
+                    <p>Fast Turnaround</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fas fa-star"></i></div>
+                    <h3>99%</h3>
+                    <p>Client Satisfaction</p>
+                </div>
             </div>
         </div>
     </section>
@@ -234,6 +264,80 @@
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section id="reviews" class="testimonials section-padding">
+        <div class="container">
+            <div class="section-title reveal">
+                <h2>Client Reviews</h2>
+                <p>What our happy customers have to say</p>
+            </div>
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card reveal">
+                    <div class="review-stars">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="review-text">"Absolutely the best dry cleaning service in Accra! They managed to get a tough wine stain out of my favorite jacket. Very professional and always on time."</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-img">
+                            <span class="avatar">SJ</span>
+                        </div>
+                        <div>
+                            <h4>Sarah J.</h4>
+                            <p>Accra</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="review-card reveal" style="transition-delay: 0.1s;">
+                    <div class="review-stars">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                    </div>
+                    <p class="review-text">"I use their pickup & delivery service every week for my office shirts. The quality of ironing is fantastic and it saves me so much time. Highly recommended!"</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-img">
+                            <span class="avatar">KM</span>
+                        </div>
+                        <div>
+                            <h4>Kwame M.</h4>
+                            <p>Tamale</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="review-card reveal" style="transition-delay: 0.2s;">
+                    <div class="review-stars">
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star text-warning"></i>
+                        <i class="fas fa-star-half-alt text-warning"></i>
+                    </div>
+                    <p class="review-text">"Booked them for a post-construction deep cleaning of my new home. They wiped every corner and completely transformed the space. Will definitely book again."</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-img">
+                            <span class="avatar">AO</span>
+                        </div>
+                        <div>
+                            <h4>Akua O.</h4>
+                            <p>Accra</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Blog Section -->
     <section id="blog" class="blog section-padding bg-light">
         <div class="container">
@@ -395,7 +499,7 @@
                     </div>
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
-                        <p>info@dlaundry.com.gh</p>
+                        <p>adamc7126@gmail.com</p>
                     </div>
                     <div class="info-item">
                         <i class="fab fa-whatsapp"></i>
@@ -412,35 +516,35 @@
                     </div>
                 </div>
                 <div class="contact-form reveal" style="transition-delay: 0.1s;">
-                    <form id="bookingForm">
+                    <form id="bookingForm" action="mailto:adamc7126@gmail.com" method="POST" enctype="text/plain">
                         <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
+                            <input type="text" name="Name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Phone Number" required>
+                            <input type="tel" name="Phone" placeholder="Phone Number" required>
                         </div>
                         <div class="form-group">
-                            <select required>
+                            <select name="Location" required>
                                 <option value="" disabled selected>Select Location</option>
-                                <option value="accra">Accra</option>
-                                <option value="tamale">Tamale</option>
+                                <option value="Accra">Accra</option>
+                                <option value="Tamale">Tamale</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <select required>
+                            <select name="Service" required>
                                 <option value="" disabled selected>Select Service</option>
-                                <option value="wash">Washing & Folding</option>
-                                <option value="dryclean">Dry Cleaning</option>
-                                <option value="iron">Ironing</option>
-                                <option value="pickup">Pickup & Delivery</option>
-                                <option value="cleaning">Home & Office Cleaning</option>
-                                <option value="deepcleaning">Deep Cleaning</option>
+                                <option value="Washing & Folding">Washing & Folding</option>
+                                <option value="Dry Cleaning">Dry Cleaning</option>
+                                <option value="Ironing">Ironing</option>
+                                <option value="Pickup & Delivery">Pickup & Delivery</option>
+                                <option value="Home & Office Cleaning">Home & Office Cleaning</option>
+                                <option value="Deep Cleaning">Deep Cleaning</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Additional Details or Message" rows="4"></textarea>
+                            <textarea name="Message" placeholder="Special Requirements or Instructions" rows="4"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Book Now</button>
+                        <button type="submit" class="btn btn-primary w-100">Confirm Booking</button>
                     </form>
                 </div>
             </div>

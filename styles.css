@@ -266,38 +266,68 @@ img {
    Hero Section
    ========================================= */
 .hero {
-    height: 100vh;
-    min-height: 600px;
+    min-height: 85vh; /* Gives the classic SaaS spacing */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)),
-        url('https://images.unsplash.com/photo-1545173168-9f1947eebb7f?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
-    background-attachment: fixed;
-    padding-top: 80px;
-    /* Accounts for fixed header */
+    background: radial-gradient(circle at top center, #ffffff 0%, var(--bg-light) 100%);
+    padding-top: 120px;
+    padding-bottom: 60px;
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 1000px;
     padding: 0 20px;
+    z-index: 1;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--secondary);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 30px;
+    border: 1px solid var(--bg-gray);
+    animation: fadeUp 1s ease 0.1s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.hero-badge i.fa-star {
+    font-size: 0.85rem;
+}
+
+.hero-badge i.fa-check-circle {
+    font-size: 1.1rem;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
+    font-size: 4.8rem;
+    font-weight: 800;
+    margin-bottom: 25px;
     color: var(--secondary);
+    letter-spacing: -0.04em;
+    line-height: 1.1;
     animation: fadeUp 1s ease 0.2s forwards;
     opacity: 0;
     transform: translateY(30px);
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: var(--text-muted);
-    margin-bottom: 35px;
+    margin-bottom: 40px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
     animation: fadeUp 1s ease 0.4s forwards;
     opacity: 0;
     transform: translateY(30px);
@@ -307,9 +337,64 @@ img {
     display: flex;
     gap: 20px;
     justify-content: center;
-    animation: fadeUp 1s ease 0.6s forwards;
+    margin-bottom: 70px;
+    animation: fadeUp 1s ease 0.5s forwards;
     opacity: 0;
     transform: translateY(30px);
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    animation: fadeUp 1s ease 0.7s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.stat-box {
+    background: var(--white);
+    padding: 25px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+}
+
+.stat-icon {
+    width: 45px;
+    height: 45px;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+}
+
+.stat-box h3 {
+    font-size: 2.2rem;
+    color: var(--primary);
+    margin-bottom: 5px;
+    letter-spacing: -0.02em;
+}
+
+.stat-box p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 500;
 }
 
 @keyframes fadeUp {
@@ -468,6 +553,45 @@ img {
     font-size: 0.95rem;
 }
 
+/* Small-screen: allow horizontal swipe/scroll of the services list without changing markup */
+@media (max-width: 900px) {
+  .services-scroll-wrapper {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 0.5rem 0; /* allow easier thumb swipe */
+  }
+
+  /* each duplicated track becomes a horizontal row (side-by-side) */
+  .services-track {
+    display: flex;
+    gap: 1rem;
+    flex: 0 0 auto;
+    animation: none !important; /* pause any marquee/animation on small screens */
+  }
+
+  /* make cards a consistent swipe target and enable snap */
+  .service-card {
+    scroll-snap-align: start;
+    flex: 0 0 260px;      /* card width when swiping (adjust if you prefer wider/narrower) */
+    min-width: 220px;
+    max-width: 320px;
+    box-sizing: border-box;
+  }
+
+  /* subtle visual hint for horizontal scroll (optional, non-invasive) */
+  .services-scroll-wrapper::after{
+    content: '';
+    flex: 0 0 8px; /* provides a little breathing room at the end for snapping */
+  }
+
+  /* hide default scrollbar on WebKit while keeping native scroll behaviour */
+  .services-scroll-wrapper::-webkit-scrollbar { height: 8px; }
+  .services-scroll-wrapper::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 6px; }
+
+}
 /* =========================================
    Pricing
    ========================================= */
@@ -686,6 +810,80 @@ img {
 }
 
 /* =========================================
+   Testimonials (Reviews)
+   ========================================= */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.review-card {
+    background: var(--white);
+    padding: 35px 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid var(--bg-gray);
+    display: flex;
+    flex-direction: column;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.review-stars {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.text-warning {
+    color: #f59e0b;
+}
+
+.review-text {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    font-style: italic;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.reviewer-img .avatar {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.reviewer-info h4 {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+    color: var(--secondary);
+}
+
+.reviewer-info p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* =========================================
    Blog Section
    ========================================= */
 .blog-scroll-wrapper {
@@ -832,6 +1030,42 @@ img {
 .blog-content .btn {
     align-self: flex-start;
     margin-top: auto;
+}
+
+/* Small-screen: allow horizontal swipe/scroll of the blog list (same behavior as services) */
+@media (max-width: 900px) {
+  .blog-scroll-wrapper {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 0.5rem 0;
+  }
+
+  .blog-track {
+    display: flex;
+    gap: 1rem;
+    flex: 0 0 auto;
+    animation: none !important;
+  }
+
+  /* target direct children of the track so it works regardless of item class names */
+  .blog-track > * {
+    scroll-snap-align: start;
+    flex: 0 0 300px;
+    min-width: 220px;
+    max-width: 360px;
+    box-sizing: border-box;
+  }
+
+  .blog-scroll-wrapper::after{
+    content: '';
+    flex: 0 0 8px;
+  }
+
+  .blog-scroll-wrapper::-webkit-scrollbar { height: 8px; }
+  .blog-scroll-wrapper::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 6px; }
 }
 
 /* =========================================
@@ -1135,13 +1369,28 @@ img {
         margin: 15px 0;
     }
 
+    .hero-badge {
+        font-size: 0.8rem;
+        padding: 6px 16px;
+    }
+
     .hero-content h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
 
     .hero-buttons {
         flex-direction: column;
         gap: 15px;
+        margin-bottom: 40px;
+    }
+
+    .stat-box {
+        min-width: 140px;
+        padding: 20px 15px;
+    }
+
+    .stat-box h3 {
+        font-size: 1.8rem;
     }
 
     .section-padding {
