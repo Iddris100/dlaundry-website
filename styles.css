@@ -592,6 +592,7 @@ img {
   .services-scroll-wrapper::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 6px; }
 
 }
+
 /* =========================================
    Pricing
    ========================================= */
@@ -1437,4 +1438,165 @@ img {
     .btn {
         padding: 10px 20px; /* Slightly narrower buttons */
     }
+}
+
+/* Reviews — behave exactly like Services (marquee on large, swipe on small) */
+.reviews-scroll-wrapper {
+    display: flex;
+    overflow: hidden;
+    gap: 30px;
+    padding: 20px 0 40px;
+    position: relative;
+    width: 100%;
+}
+
+.reviews-scroll-wrapper::before,
+.reviews-scroll-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.reviews-scroll-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg-light) 0%, transparent 100%);
+}
+
+.reviews-scroll-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg-light) 0%, transparent 100%);
+}
+
+.reviews-track {
+    display: flex;
+    gap: 30px;
+    animation: scrollTrack 30s linear infinite;
+    flex-shrink: 0;
+}
+
+.reviews-scroll-wrapper:hover .reviews-track {
+    animation-play-state: paused;
+}
+
+.reviews-track .review-card {
+    width: 360px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* scroll-arrow (same as services/blog) */
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15,23,42,0.06);
+    color: var(--secondary);
+    font-size: 16px;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0.9;
+}
+.scroll-arrow.left { left: 12px; }
+.scroll-arrow.right { right: 12px; }
+
+/* Small-screen: hide native scrollbars and show tiny faded arrows (swipe hint) */
+@media (max-width: 900px) {
+  .services-scroll-wrapper,
+  .blog-scroll-wrapper,
+  .reviews-scroll-wrapper {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 0.5rem 0;
+  }
+
+  .services-scroll-wrapper::-webkit-scrollbar,
+  .blog-scroll-wrapper::-webkit-scrollbar,
+  .reviews-scroll-wrapper::-webkit-scrollbar {
+    display: none;
+    height: 0;
+  }
+
+  /* convert duplicated tracks to simple horizontal rows and disable marquee */
+  .services-track,
+  .blog-track,
+  .reviews-track {
+    display: flex;
+    gap: 1rem;
+    animation: none !important;
+    flex: 0 0 auto;
+  }
+
+  .services-track > *,
+  .blog-track > *,
+  .reviews-track > * {
+    scroll-snap-align: start;
+    flex: 0 0 300px;
+    min-width: 220px;
+    max-width: 360px;
+    box-sizing: border-box;
+  }
+
+  /* small faded round arrows as swipe hint (non-interactive) */
+  .services-scroll-wrapper::before,
+  .blog-scroll-wrapper::before,
+  .reviews-scroll-wrapper::before,
+  .services-scroll-wrapper::after,
+  .blog-scroll-wrapper::after,
+  .reviews-scroll-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(15, 23, 42, 0.06);
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0.35;
+  }
+
+  .services-scroll-wrapper::before,
+  .blog-scroll-wrapper::before,
+  .reviews-scroll-wrapper::before {
+    left: 8px;
+  }
+
+  .services-scroll-wrapper::after,
+  .blog-scroll-wrapper::after,
+  .reviews-scroll-wrapper::after {
+    right: 8px;
+  }
+
+  /* hide the larger scroll-arrow circles visually but keep small faded hints */
+  .scroll-arrow { display: none; }
+}
+
+/* ensure pointer-driven horizontal dragging works reliably */
+.services-scroll-wrapper,
+.blog-scroll-wrapper,
+.reviews-scroll-wrapper {
+  touch-action: pan-y; /* allow vertical page scroll, let JS handle horizontal dragging */
+}
+
+/* visual / interaction helper while dragging */
+.services-scroll-wrapper.dragging,
+.blog-scroll-wrapper.dragging,
+.reviews-scroll-wrapper.dragging {
+  cursor: grabbing;
+  -webkit-user-drag: none;
+  user-select: none;
 }
